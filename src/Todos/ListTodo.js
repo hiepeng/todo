@@ -44,6 +44,15 @@ class ListTodo extends React.Component {
     toast.success("Thành Công")
   }
 
+  handleDeleteAll = (todo) => {
+    let deleteAll = this.state.ListTodos;
+    deleteAll = [];
+    this.setState({
+        ListTodos: deleteAll
+    })
+    toast.success("Thành Công")
+  }
+
   handleOnchangeEditTodo = (event) => {
       let editTodoCopy = { ...this.state.editTodo };
       editTodoCopy.title = event.target.value;
@@ -94,6 +103,7 @@ class ListTodo extends React.Component {
                   }
                   </button>
                   <button className="delete" onClick={()=> this.handleDeleteTodo(item)}>Delete</button>
+                  <button className="deleteAll" onClick={()=> this.handleDeleteAll(item)}>Delete All</button>
                 </div>
               );
             })}
